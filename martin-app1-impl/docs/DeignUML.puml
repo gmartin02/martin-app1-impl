@@ -1,0 +1,55 @@
+@startuml
+class Application {
+    start()
+    main()
+    saveToDoLists(): ToDoListManager
+    writeToFile(ToDoListManager selectedLists)
+    loadToDoLists(): ToDoListManager
+}
+
+class ToDoListManager {
+    List<ToDoList> manager = new ArrayList<>()
+    String fileLocation
+    String fileName
+    File file = new File(fileLocation + "/" + fileName)
+
+    getFileLocation(): String
+    deleteList(ToDoList tdl)
+    createList(): ToDoList
+    ediTitle(ToDoList tdl)
+}
+
+class ToDoList {
+String title;
+    List<Item> itemList = new ArrayList<>()
+    boolean selected = false
+
+    getTitle(): String
+    removeItem(Item item)
+    addItem(Item newItem): String
+    displayWholeList()
+    displayCompletedItems()
+    displayIncompleteItems()
+}
+
+class Item {
+    String name
+    String description
+    String dueDate
+    boolean completion = false
+
+    getName(): String
+    getDescription(): String
+    getDueDate(): String
+    createItem()
+    editDescription()
+    editDueDate()
+    changeCompletion()
+
+
+}
+Application --o ToDoListManager
+ToDoListManager --o ToDoList
+ToDoList --o Item
+
+@enduml
