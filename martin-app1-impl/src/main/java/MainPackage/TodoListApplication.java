@@ -9,7 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class TodoListApplication extends javafx.application.Application {
     @Override
@@ -26,34 +30,6 @@ public class TodoListApplication extends javafx.application.Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public ToDoListManager saveToDoList() {
-        //creates am empty ToDoListManager
-        //adds only the ToDoLists with their selected fields set to true
-        //returns the newly created ToDoListManager to be saved to a file
-        return null;
-    }
-
-    public void writeToFile(ToDoListManager selectedList) {
-        //writes the manager created in the function above and loops through
-        // its to do lists and each of the items and writes it down in each down on a separate line
-        //for example:
-            //groceries 2
-                //get apple
-                    //granny smith
-                    //2021-10-31
-                //get chicken
-                    //tender
-                    //2021-10-31
-        //the integer after the list name represents the number of items in the list
-    }
-
-    public ToDoListManager loadToDoList() {
-        //loads the file that contains a ToDoListManager
-        //reads the txt file in the same way described above to populate a new ToDoListManager
-        //returns newly made manager
-        return null;
     }
 }
 
