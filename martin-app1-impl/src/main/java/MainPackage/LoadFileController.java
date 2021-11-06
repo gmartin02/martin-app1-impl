@@ -37,8 +37,6 @@ public class LoadFileController implements Initializable {
 
             stage.show();
 
-
-
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.close();
         } else {

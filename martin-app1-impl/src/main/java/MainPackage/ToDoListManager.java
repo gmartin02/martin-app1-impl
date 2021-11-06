@@ -63,7 +63,7 @@ public class ToDoListManager {
             //create a buffered reader insider a try/catch block
             try (Scanner sc = new Scanner(file)) {
                 //while the next line is not null
-                while (sc.hasNextLine()) {
+
                     loadedList.tdl.title = sc.nextLine();
 
                     String listSize = sc.nextLine();
@@ -83,7 +83,6 @@ public class ToDoListManager {
 
                         loadedList.tdl.itemList.add(item);
                     }
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,10 +101,11 @@ public class ToDoListManager {
         return null;
     }
 
-    public void createList(String title) {
+    public String createList(String title) {
         tdl.title = title;
         System.out.println("Title: " + tdl.title);
         //gets the title
+        return title;
     }
 
     public void ediTitle(String newTitle) {
