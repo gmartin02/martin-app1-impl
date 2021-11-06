@@ -31,7 +31,7 @@ public class ToDoListManager {
                     bw.write(manager.tdl.itemList.get(i).description);
                     bw.write(manager.tdl.itemList.get(i).dueDate);
 
-                    if(manager.tdl.itemList.get(i).completion) {
+                    if(manager.tdl.itemList.get(i).completion.equals("true")) {
                         bw.write("complete");
                     } else {
                         bw.write("incomplete");
@@ -57,7 +57,7 @@ public class ToDoListManager {
     public ToDoListManager loadToDoList(String location) {
         ToDoListManager loadedList = new ToDoListManager();
         //loads the file that contains a ToDoListManager
-        File file = new File(location);
+        file = new File(location);
         //reads the txt file in the same way described above to populate a new ToDoListManager
         try {
             //create a buffered reader insider a try/catch block
@@ -65,17 +65,20 @@ public class ToDoListManager {
                 //while the next line is not null
                 while (sc.hasNextLine()) {
                     loadedList.tdl.title = sc.nextLine();
-                    int listSize = sc.nextInt();
-                    for(int i = 0;i < listSize; i++) {
+
+                    String listSize = sc.nextLine();
+                    for(int i = 0;i < Integer.parseInt(listSize); i++) {
                         Item item = new Item();
                         item.name = sc.nextLine();
                         item.description = sc.nextLine();
                         item.dueDate = sc.nextLine();
 
-                        if(sc.nextLine().equals("complete")) {
-                            item.completion = true;
-                        } else if(sc.nextLine().equals("incomplete")) {
-                            item.completion = false;
+                        String completionStatus = sc.nextLine();
+
+                        if(completionStatus.equals("complete")) {
+                            item.completion = "true";
+                        } else if(completionStatus.equals("incomplete")) {
+                            item.completion = "false";
                         }
 
                         loadedList.tdl.itemList.add(item);
@@ -99,18 +102,14 @@ public class ToDoListManager {
         return null;
     }
 
-    public void deleteList(ToDoList tdl) {
-        //gets the list selected in the GUI and ensures that it exists in the manager
-        //using its index it is removed from the list
+    public void createList(String title) {
+        tdl.title = title;
+        System.out.println("Title: " + tdl.title);
+        //gets the title
     }
 
-    public ToDoList createList() {
-        ToDoList tdl = new ToDoList();
-        //gets the title, description, and dueDate from the GUI
-        return tdl;
-    }
-
-    public void ediTitle(ToDoList tdl) {
+    public void ediTitle(String newTitle) {
+        tdl.title = newTitle;
         //changes the title of the list by prompting for a new name and reassigning title
     }
 }

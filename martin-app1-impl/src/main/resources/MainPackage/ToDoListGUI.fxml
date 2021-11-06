@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPackage.ToDoListGUIController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPackage.ToDoListGUIController">
    <children>
       <Label contentDisplay="BOTTOM" text="Welcome to OhWhatToDo!">
          <padding>
@@ -20,13 +20,15 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tableView" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" translateX="50.0" translateY="20.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="completionColumn" prefWidth="40.0" text="Done?" />
+          <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="460.0" text="Description" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="100.0" text="DueDate" />
         </columns>
       </TableView>
-      <HBox prefHeight="518.0" prefWidth="413.0" spacing="200.0">
+      <HBox fillHeight="false" prefHeight="61.0" prefWidth="800.0" spacing="200.0" translateY="250.0">
          <children>
             <Button fx:id="createList" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeToMakeNewFileSceneOnButtonPress" text="Create List">
                <font>
@@ -45,8 +47,18 @@
             </Button>
          </children>
          <padding>
-            <Insets left="60.0" top="350.0" />
+            <Insets left="60.0" />
          </padding>
+      </HBox>
+      <HBox fillHeight="false" layoutX="10.0" layoutY="477.0" prefHeight="61.0" prefWidth="800.0" spacing="200.0">
+         <padding>
+            <Insets left="60.0" />
+         </padding>
+         <children>
+            <Button mnemonicParsing="false" text="Add Item" />
+            <Button mnemonicParsing="false" text="Remove Item" />
+            <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" text="Edit Item" />
+         </children>
       </HBox>
    </children>
 </VBox>

@@ -15,7 +15,7 @@ public class ToDoList {
     public String getTitle() {
         //gets todolist title from the user
         //validates data to ensure it is at least 3 characters long
-        return null;
+        return title;
     }
 
     public void clearList() {

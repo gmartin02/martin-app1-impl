@@ -9,11 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Objects;
-import java.util.Scanner;
+
 
 public class TodoListApplication extends javafx.application.Application {
     @Override
