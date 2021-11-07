@@ -1,55 +1,110 @@
 @startuml
-class Application {
+class TodoListApplication {
     start()
     main()
-    saveToDoLists(): ToDoListManager
-    writeToFile(ToDoListManager selectedLists)
-    loadToDoLists(): ToDoListManager
 }
 
 class ToDoListManager {
-    List<ToDoList> manager = new ArrayList<>()
+ToDoList tdl = new ToDoList()
     String fileLocation
-    String fileName
-    File file = new File(fileLocation + "/" + fileName)
+    File file = new File(getFileLocation()+ "/" + getFileName())
 
-    getFileLocation(): String
-    deleteList(ToDoList tdl)
-    createList(): ToDoList
-    ediTitle(ToDoList tdl)
+    +writeToFile(String file, ToDoListManager manager)
+    +ToDoListManager loadToDoList(String location)
+    +String getFileLocation()
+    +String getFileName()
+    +String createList(String title)
 }
 
 class ToDoList {
-String title;
+String title
     List<Item> itemList = new ArrayList<>()
-    boolean selected = false
 
-    getTitle(): String
-    removeItem(Item item)
-    addItem(Item newItem): String
-    displayWholeList()
-    displayCompletedItems()
-    displayIncompleteItems()
+    +List<Item> clearList()
+    +addItem(Item newItem)
+    +displayCompletedItems(List<Item> displayList)
+    +displayIncompleteItems(List<Item> displayList)
 }
 
 class Item {
-    String name
-    String description
-    String dueDate
-    boolean completion = false
+        String completion
+        String name
+        String description
+        String dueDate
 
-    getName(): String
-    getDescription(): String
-    getDueDate(): String
-    createItem()
-    editDescription()
-    editDueDate()
-    changeCompletion()
-
-
+        +Item()
+        +Item(String name, String description, String dueDate, String completion)
+        =String getName()
+        +String getDescription()
+        +String getDueDate()
+        +String getCompletion()
+        +changeCompletion()
 }
-Application --o ToDoListManager
+TodoListApplication --o ToDoListGUIController
 ToDoListManager --o ToDoList
 ToDoList --o Item
+
+class ToDoListGUIController {
+
+    <Item>todoList
+    ToDoListManager tdm
+    -TextField fileLocationAndName
+    +TableView<Item> tableView
+    -TableColumn<Item, String> completionColumn
+    -TableColumn<Item, String> nameColumn
+    -TableColumn<Item, String> descriptionColumn
+    -TableColumn<Item, String> dueDateColumn
+    -RadioButton showAllItems
+    -RadioButton showIncompletedItems
+    -RadioButton showCompletedItems
+
+    +changeItemViewOnRadioToggle()
+    +toggleCompletionOnButtonPress()
+    +removeItemFromTable()
+    +clearAllItemsFromTable()
+    +saveListToTextFile()
+    +popupAddItemSceneOnButtonPress()
+    +popupEditItemSceneOnButtonPress()
+    +changeToLoadFileSceneOnButtonPress()
+    +closeWindowOnExitButtonPress(MouseEvent event)
+    +initialize(URL location, ResourceBundle resources)
+    +loadTable(ToDoListManager tdm)
+}
+
+class AddItemController {
+    ToDoListManager tdm = new ToDoListManager()
+    Item newItem = new Item()
+    -Label errorLabel
+    -TextField itemName
+    -TextField itemDescription
+    -DatePicker itemDueDate
+
+    +getItemInfo(MouseEvent event)
+}
+
+class EditItemController {
+    Item newItem = new Item();
+    ToDoListManager tdm = new ToDoListManager();
+    -Label errorLabel;
+    -TextField itemName;
+    -TextField itemDescription;
+    -DatePicker itemDueDate;
+
+    +editItemInfo(MouseEvent event)
+    +showItemInfo(Item selectedItem)
+}
+
+class LoadFileController {
+    ToDoListManager tdm = new ToDoListManager();
+    -TextField filePath;
+    -Label label;
+
+    +getFilePath(MouseEvent event)=
+}
+
+ToDoListGUIController --o LoadFileController
+ToDoListGUIController --o AddItemController
+ToDoListGUIController --o EditItemController
+
 
 @enduml
