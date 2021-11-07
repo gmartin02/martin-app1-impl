@@ -29,7 +29,7 @@ public class AddItemController {
 
     @FXML
     public void getItemInfo(MouseEvent event) throws IOException {
-        if(!itemDescription.getText().equals("")) {
+        if(!itemDescription.getText().equals("") && (itemDescription.getText().length() < 257)) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ToDoListGUI.fxml"));
             Parent root = loader.load();
             ToDoListGUIController controller = loader.getController();

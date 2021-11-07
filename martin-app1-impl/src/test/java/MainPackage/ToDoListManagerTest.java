@@ -24,7 +24,7 @@ class ToDoListManagerTest {
         test.tdl.itemList.add(itemOne);
         test.tdl.itemList.add(itemTwo);
 
-        test.writeToFile("input/testWriteToFile", test);
+        test.writeToFile("input/testWriteToFile.txt", test);
 
         assertEquals(2, test.tdl.itemList.size());
     }

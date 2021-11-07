@@ -33,6 +33,7 @@ public class LoadFileController {
             controller.tdm = tdm.loadToDoList(filePath.getText());
             controller.loadTable(tdm.loadToDoList(filePath.getText()));
 
+
             stage.show();
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

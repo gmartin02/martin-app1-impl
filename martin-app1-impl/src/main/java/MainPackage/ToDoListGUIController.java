@@ -91,7 +91,7 @@ public class ToDoListGUIController implements Initializable {
     }
     @FXML
     public void saveListToTextFile() {
-        tdm.writeToFile(fileLocationAndName.getText(), tdm);
+        tdm.writeToFile("output/" + fileLocationAndName.getText() + ".txt", tdm);
         fileLocationAndName.clear();
         fileLocationAndName.setPromptText("Enter file location followed by file name      Ex. Documents/COP3330/myList.txt");
     }
