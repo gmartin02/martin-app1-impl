@@ -8,8 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,13 +16,15 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ToDoListGUIController implements Initializable {
     ObservableList<Item> todoList = FXCollections.observableArrayList();
 
     ToDoListManager tdm = new ToDoListManager();
+
+    @FXML
+    private TextField fileLocationAndName;
     @FXML
     public TableView<Item> tableView;
     @FXML
@@ -34,6 +35,28 @@ public class ToDoListGUIController implements Initializable {
     private TableColumn<Item, String> descriptionColumn;
     @FXML
     private TableColumn<Item, String> dueDateColumn;
+
+    @FXML
+    public void removeItemFromTable() {
+        Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+        todoList.remove(selectedItem);
+        tdm.tdl.itemList = todoList;
+        tableView.getItems().removeAll(selectedItem);
+    }
+
+    @FXML
+    public void clearAllItemsFromTable() {
+        tableView.getItems().removeAll(todoList);
+        todoList.removeAll();
+        tdm.tdl.itemList = todoList;
+        loadTable(tdm);
+    }
+    @FXML
+    public void saveListToTextFile() {
+        tdm.writeToFile(fileLocationAndName.getText(), tdm);
+        fileLocationAndName.clear();
+        fileLocationAndName.setPromptText("Enter file location followed by file name      Ex. Documents/COP3330/myList.txt");
+    }
 
     @FXML
     public void changeToLoadFileSceneOnButtonPress() throws IOException {
@@ -49,6 +72,7 @@ public class ToDoListGUIController implements Initializable {
         stage.setScene(loadFileScene);
         stage.show();
     }
+
 
     @FXML
     public void changeToMakeNewFileSceneOnButtonPress() throws IOException {

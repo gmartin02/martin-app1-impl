@@ -33,6 +33,7 @@ public class LoadFileController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
+            controller.tdm = tdm.loadToDoList(filePath.getText());
             controller.loadTable(tdm.loadToDoList(filePath.getText()));
 
             stage.show();

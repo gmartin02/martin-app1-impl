@@ -10,31 +10,30 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class ToDoListManager {
-    String fileLocation;
-    String fileName;
-    File file = new File(fileLocation + "/" + fileName);
     ToDoList tdl = new ToDoList();
+    String fileLocation;
+    File file = new File(getFileLocation()+ "/" + getFileName());
 
-    public void writeToFile() {
-        ToDoListManager manager = new ToDoListManager();
+
+    public void writeToFile(String file, ToDoListManager manager) {
         //writes the manager created in the function above and loops through
         // its to do lists and each of the items and writes it down in each down on a separate line
 
         try {
             //create a buffered reader insider a try/catch block
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(manager.file))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
                 //for loop through the size of the todolist
-                bw.write(manager.tdl.title);
-                bw.write(manager.tdl.itemList.size());
+                bw.write(manager.tdl.title + "\n");
+                bw.write(manager.tdl.itemList.size() + "\n");
                 for(int i = 0;i < manager.tdl.itemList.size(); i++) {
-                    bw.write(manager.tdl.itemList.get(i).name);
-                    bw.write(manager.tdl.itemList.get(i).description);
-                    bw.write(manager.tdl.itemList.get(i).dueDate);
+                    bw.write(manager.tdl.itemList.get(i).name + "\n");
+                    bw.write(manager.tdl.itemList.get(i).description + "\n");
+                    bw.write(manager.tdl.itemList.get(i).dueDate + "\n");
 
                     if(manager.tdl.itemList.get(i).completion.equals("true")) {
-                        bw.write("complete");
+                        bw.write("complete" + "\n");
                     } else {
-                        bw.write("incomplete");
+                        bw.write("incomplete" + "\n");
                     }
                 }
             }
@@ -93,12 +92,12 @@ public class ToDoListManager {
 
     public String getFileLocation() {
         //returns file location provided by user
-        return null;
+        return fileLocation;
     }
 
-    public String getFileLName() {
+    public String getFileName() {
         //returns file name provided by user
-        return null;
+        return tdl.title;
     }
 
     public String createList(String title) {
