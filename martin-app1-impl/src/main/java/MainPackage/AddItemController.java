@@ -53,7 +53,7 @@ public class AddItemController {
             } else {
                 newItem.dueDate = itemDueDate.getValue().toString();
             }
-            newItem.completion = "false";
+            newItem.completion = "no";
 
             //adds the item to the GUI display and the programs todolist
             tdm.tdl.addItem(newItem);

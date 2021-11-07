@@ -52,7 +52,7 @@ public class EditItemController {
             } else {
                 newItem.dueDate = itemDueDate.getValue().toString();
             }
-            newItem.completion = "false";
+            newItem.completion = "no";
 
             tdm.tdl.addItem(newItem);
             controller.todoList.add(newItem);

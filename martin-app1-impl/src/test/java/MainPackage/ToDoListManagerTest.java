@@ -103,12 +103,4 @@ class ToDoListManagerTest {
 
         assertEquals("itemListOne", test.getFileName());
     }
-
-    @Test
-    void createList() {
-        ToDoListManager test = new ToDoListManager();
-        test.createList("itemListOne");
-
-        assertEquals("itemListOne", test.getFileName());
-    }
 }

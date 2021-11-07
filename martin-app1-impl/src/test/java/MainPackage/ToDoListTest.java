@@ -59,13 +59,13 @@ class ToDoListTest {
 
         Item itemOne = new Item();
         itemOne.name = "homework";
-        itemOne.completion = "false";
+        itemOne.completion = "no";
         itemOne.dueDate = "";
         itemOne.description = "math";
 
         Item itemTwo = new Item();
         itemTwo.name = "test";
-        itemTwo.completion = "true";
+        itemTwo.completion = "yes";
         itemTwo.dueDate = "2021-12-02";
         itemTwo.description = "math";
 
@@ -87,13 +87,13 @@ class ToDoListTest {
 
         Item itemOne = new Item();
         itemOne.name = "homework";
-        itemOne.completion = "false";
+        itemOne.completion = "no";
         itemOne.dueDate = "";
         itemOne.description = "math";
 
         Item itemTwo = new Item();
         itemTwo.name = "test";
-        itemTwo.completion = "true";
+        itemTwo.completion = "yes";
         itemTwo.dueDate = "2021-12-02";
         itemTwo.description = "math";
 

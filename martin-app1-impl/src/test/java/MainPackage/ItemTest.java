@@ -13,13 +13,13 @@ class ItemTest {
     void changeCompletionTest() {
         Item item = new Item();
         item.name = "homework";
-        item.completion = "false";
+        item.completion = "no";
         item.dueDate = "";
         item.description = "math";
 
         item.changeCompletion();
 
-        assertEquals("true", item.completion);
+        assertEquals("yes", item.completion);
     }
 
     @Test
