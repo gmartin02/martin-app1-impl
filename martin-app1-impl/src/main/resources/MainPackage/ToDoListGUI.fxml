@@ -32,11 +32,6 @@
       </TableView>
       <HBox fillHeight="false" prefHeight="61.0" prefWidth="800.0" spacing="110.0" translateY="250.0">
          <children>
-            <Button fx:id="createList" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#changeToMakeNewFileSceneOnButtonPress" text="Create List">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
             <Button fx:id="saveList" mnemonicParsing="false" onMouseClicked="#saveListToTextFile" text="Save">
                <font>
                   <Font size="20.0" />
@@ -54,7 +49,7 @@
             </Button>
          </children>
          <padding>
-            <Insets left="60.0" />
+            <Insets left="170.0" />
          </padding>
       </HBox>
       <HBox fillHeight="false" layoutX="10.0" layoutY="477.0" prefHeight="28.0" prefWidth="800.0" spacing="60.0">
@@ -83,6 +78,7 @@
             <Insets left="90.0" />
          </VBox.margin>
       </HBox>
-      <TextField fx:id="fileLocationAndName" maxWidth="-Infinity" prefWidth="500.0" promptText="Enter file location followed by file name      Ex. Documents/COP3330/myList.txt" translateX="150.0" translateY="75.0" />
+      <TextField fx:id="fileLocationAndName" maxWidth="-Infinity" prefWidth="200.0" promptText="Enter a name for your file." translateX="105.0" translateY="75.0" />
+      <Label alignment="CENTER" maxWidth="-Infinity" prefWidth="800.0" text="Always make sure a radio button is selected whenever a new window appears!" textFill="RED" />
    </children>
 </VBox>

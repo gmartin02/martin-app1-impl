@@ -28,8 +28,11 @@ public class AddItemController {
     private DatePicker itemDueDate;
 
     @FXML
+    //takes the info from the two text boxes and date picker and adds that to the current list and displays it to the table
     public void getItemInfo(MouseEvent event) throws IOException {
+        //ensures the description is between 1 and 256 characters long (inclusive)
         if(!itemDescription.getText().equals("") && (itemDescription.getText().length() < 257)) {
+            //opens the main controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ToDoListGUI.fxml"));
             Parent root = loader.load();
             ToDoListGUIController controller = loader.getController();
@@ -37,6 +40,7 @@ public class AddItemController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
+            //gets the correct information from the GUI elements and assigns it to an empty Item
             newItem.name = itemName.getText();
             newItem.description = itemDescription.getText();
 
@@ -47,6 +51,7 @@ public class AddItemController {
             }
             newItem.completion = "false";
 
+            //adds the item to the GUI display and the programs todolist
             tdm.tdl.addItem(newItem);
             controller.todoList.add(newItem);
             controller.tdm = tdm;
@@ -57,7 +62,8 @@ public class AddItemController {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.close();
         } else {
-            errorLabel.setText("Please enter a description");
+            //gives the user an error message if the description requirements are not met
+            errorLabel.setText("Please enter a valid description");
         }
     }
 }

@@ -43,6 +43,7 @@ public class ToDoListGUIController implements Initializable {
     @FXML
     private RadioButton showCompletedItems;
 
+    //changes to various views in the table view
     @FXML
     public void changeItemViewOnRadioToggle() {
         ToDoListManager currentDisplay = new ToDoListManager();
@@ -64,24 +65,31 @@ public class ToDoListGUIController implements Initializable {
             loadTable(currentDisplay);
         }
     }
+
+    //toggles the item selected's completion value in table view ONLY IF RADIO BUTTON IS SELECTED
     @FXML
     public void toggleCompletionOnButtonPress() {
         Item selectedItem = tableView.getSelectionModel().getSelectedItem();
         if(tdm.tdl.itemList.contains(selectedItem)) {
-            int indexOfItem = tdm.tdl.itemList.lastIndexOf(selectedItem);
+            int indexOfItem = tdm.tdl.itemList.indexOf(selectedItem);
             tdm.tdl.itemList.get(indexOfItem).changeCompletion();
             loadTable(tdm);
         }
     }
 
+    //removes the item selected in table view ONLY IF RADIO BUTTON IS SELECTED
     @FXML
     public void removeItemFromTable() {
         Item selectedItem = tableView.getSelectionModel().getSelectedItem();
-        todoList.remove(selectedItem);
-        tdm.tdl.itemList = todoList;
-        tableView.getItems().removeAll(selectedItem);
+        if(tdm.tdl.itemList.contains(selectedItem)) {
+            todoList.remove(selectedItem);
+            tdm.tdl.itemList.remove(selectedItem);
+            loadTable(tdm);
+            System.out.println(tdm.tdl.itemList.get(0).name);
+        }
     }
 
+    //clears everything from the table view and within the program
     @FXML
     public void clearAllItemsFromTable() {
         tableView.getItems().removeAll(todoList);
@@ -89,6 +97,8 @@ public class ToDoListGUIController implements Initializable {
         tdm.tdl.itemList = tdm.tdl.clearList();
         loadTable(tdm);
     }
+
+    //button to save the file as a txt file
     @FXML
     public void saveListToTextFile() {
         tdm.writeToFile("output/" + fileLocationAndName.getText() + ".txt", tdm);
@@ -96,6 +106,7 @@ public class ToDoListGUIController implements Initializable {
         fileLocationAndName.setPromptText("Enter file location followed by file name      Ex. Documents/COP3330/myList.txt");
     }
 
+    //creates popup to add item into the list
     @FXML
     public void popupAddItemSceneOnButtonPress() throws IOException{
         List<Item> currentItems = tableView.getItems();
@@ -115,6 +126,7 @@ public class ToDoListGUIController implements Initializable {
         stage.show();
     }
 
+    //creates popup to edit item in the list
     @FXML
     public void popupEditItemSceneOnButtonPress() throws IOException {
         List<Item> currentItems = tableView.getItems();
@@ -139,6 +151,7 @@ public class ToDoListGUIController implements Initializable {
         stage.show();
     }
 
+    //opens up a load scene window where you type in the location of your file to have it displayed
     @FXML
     public void changeToLoadFileSceneOnButtonPress() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoadFile.fxml"));
@@ -154,28 +167,14 @@ public class ToDoListGUIController implements Initializable {
         stage.show();
     }
 
-
-    @FXML
-    public void changeToMakeNewFileSceneOnButtonPress() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateList.fxml"));
-        Parent createFileParent = loader.load();
-        Scene createFileScene = new Scene(createFileParent);
-
-        Scene scene = tableView.getScene();
-        Window window = scene.getWindow();
-        Stage stage = (Stage) window;
-
-        stage.setTitle("Create File");
-        stage.setScene(createFileScene);
-        stage.show();
-    }
-
+    //exits the program when exit is pressed
     @FXML
     public void closeWindowOnExitButtonPress(MouseEvent event) {
         Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
         window.close();
     }
 
+    //loads the table when the scene starts
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         completionColumn.setCellValueFactory(new PropertyValueFactory<>("completion"));
@@ -186,6 +185,7 @@ public class ToDoListGUIController implements Initializable {
         tableView.setItems(todoList);
     }
 
+    //loads the table with new todolist manager when called
     @FXML
     public void loadTable(ToDoListManager tdm) {
         tableView.getItems().clear();

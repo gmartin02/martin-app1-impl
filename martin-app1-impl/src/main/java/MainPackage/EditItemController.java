@@ -26,10 +26,12 @@ public class EditItemController {
     @FXML
     private DatePicker itemDueDate;
 
-
+    //takes the info from the two text boxes and date picker and changes the current item
     @FXML
     public void editItemInfo(MouseEvent event) throws IOException {
+        //ensures the description is between 1 and 256 characters long (inclusive)
         if(!itemDescription.getText().equals("")) {
+            //opens the main controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ToDoListGUI.fxml"));
             Parent root = loader.load();
             ToDoListGUIController controller = loader.getController();
@@ -37,6 +39,7 @@ public class EditItemController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
+            //gets the correct information from the GUI elements and assigns it to an empty Item
             newItem.name = itemName.getText();
             newItem.description = itemDescription.getText();
 
@@ -61,6 +64,7 @@ public class EditItemController {
         }
     }
 
+    //shows the selectedItem's info when this scene is loaded in
     @FXML
     public void showItemInfo(Item selectedItem) {
         itemName.setText(selectedItem.name);

@@ -20,6 +20,8 @@ public class LoadFileController {
     @FXML
     private Label label;
 
+    //when confirm is clicked the window closes and the file path given will load a todolist in the main window
+    //also doesn't allow an empty text field to be returned
     @FXML
     public void getFilePath(MouseEvent event) throws IOException {
         if(!filePath.getText().equals("")) {
