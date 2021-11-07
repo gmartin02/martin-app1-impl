@@ -23,7 +23,7 @@ public class ToDoList {
 
     public void displayCompletedItems(List<Item> displayList) {
         for (Item item : itemList) {
-            if (item.completion.equals("true")) {
+            if (item.completion.equals("yes")) {
                 displayList.add(item);
             }
         }
@@ -32,7 +32,7 @@ public class ToDoList {
 
     public void displayIncompleteItems(List<Item> displayList) {
         for (Item item : itemList) {
-            if (item.completion.equals("false")) {
+            if (item.completion.equals("no")) {
                 displayList.add(item);
             }
         }

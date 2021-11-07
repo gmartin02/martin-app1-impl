@@ -29,7 +29,7 @@ public class ToDoListManager {
                     bw.write(manager.tdl.itemList.get(i).description + "\n");
                     bw.write(manager.tdl.itemList.get(i).dueDate + "\n");
 
-                    if(manager.tdl.itemList.get(i).completion.equals("true")) {
+                    if(manager.tdl.itemList.get(i).completion.equals("yes")) {
                         bw.write("complete" + "\n");
                     } else {
                         bw.write("incomplete" + "\n");
@@ -74,9 +74,9 @@ public class ToDoListManager {
                         String completionStatus = sc.nextLine();
 
                         if(completionStatus.equals("complete")) {
-                            item.completion = "true";
+                            item.completion = "yes";
                         } else if(completionStatus.equals("incomplete")) {
-                            item.completion = "false";
+                            item.completion = "no";
                         }
 
                         loadedList.tdl.itemList.add(item);
@@ -97,11 +97,5 @@ public class ToDoListManager {
     public String getFileName() {
         //returns file name provided by user
         return tdl.title;
-    }
-
-    public String createList(String title) {
-        tdl.title = title;
-        //gets the title
-        return title;
     }
 }

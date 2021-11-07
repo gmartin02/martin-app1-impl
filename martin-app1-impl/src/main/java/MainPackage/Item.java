@@ -44,10 +44,10 @@ public class Item {
     }
 
     public void changeCompletion() {
-        if(completion.equals("false")) {
-            completion = "true";
-        } else if(completion.equals("true")) {
-            completion = "false";
+        if(completion.equals("no")) {
+            completion = "yes";
+        } else if(completion.equals("yes")) {
+            completion = "no";
         }
         //when activated changes completion from false to true or vice versa
         //will be a checkbox in the GUI so a check = true, empty = false
