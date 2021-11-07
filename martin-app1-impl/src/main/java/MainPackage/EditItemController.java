@@ -12,10 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-public class AddItemController {
-    ToDoListManager tdm = new ToDoListManager();
+public class EditItemController {
     Item newItem = new Item();
+    ToDoListManager tdm = new ToDoListManager();
     @FXML
     private TextField itemName;
     @FXML
@@ -30,7 +29,7 @@ public class AddItemController {
     }
 
     @FXML
-    public void getItemInfo(MouseEvent event) throws IOException {
+    public void editItemInfo(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ToDoListGUI.fxml"));
         Parent root = loader.load();
         ToDoListGUIController controller = loader.getController();
@@ -38,7 +37,7 @@ public class AddItemController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
 
-        newItem.name = itemName.getText();
+        /*newItem.name = itemName.getText();
         newItem.description = itemDescription.getText();
         newItem.dueDate = itemDueDate.getValue().toString();
         newItem.completion = "false";
@@ -46,11 +45,17 @@ public class AddItemController {
         tdm.tdl.itemList.add(newItem);
         controller.todoList.add(newItem);
         controller.tdm = tdm;
-        controller.loadTable(tdm);
+        controller.loadTable(controller.tdm);*/
 
         stage.show();
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.close();
+    }
+
+    @FXML
+    public void showItemInfo(Item selectedItem) {
+        itemName.setText(selectedItem.name);
+        itemDescription.setText(selectedItem.description);
     }
 }

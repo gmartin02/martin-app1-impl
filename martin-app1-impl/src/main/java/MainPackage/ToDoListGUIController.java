@@ -16,6 +16,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ToDoListGUIController implements Initializable {
@@ -60,10 +61,14 @@ public class ToDoListGUIController implements Initializable {
 
     @FXML
     public void popupAddItemSceneOnButtonPress() throws IOException{
+        List<Item> currentItems = tableView.getItems();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AddItem.fxml"));
         Parent addItemParent = loader.load();
         Scene addItemScene = new Scene(addItemParent);
+        AddItemController adder = loader.getController();
 
+        adder.tdm.tdl.itemList = currentItems;
         Scene scene = tableView.getScene();
         Window window = scene.getWindow();
         Stage stage = (Stage) window;
@@ -71,6 +76,28 @@ public class ToDoListGUIController implements Initializable {
         stage.setTitle("Add item");
         stage.setScene(addItemScene);
         stage.show();
+    }
+
+    @FXML
+    public void popupEditItemSceneOnButtonPress() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
+        Parent editItemParent = loader.load();
+        Scene editItemScene = new Scene(editItemParent);
+        EditItemController editItemController = loader.getController();
+
+        Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+
+        Scene scene = tableView.getScene();
+        Window window = scene.getWindow();
+        Stage stage = (Stage) window;
+
+        stage.setTitle("Edit item");
+        stage.setScene(editItemScene);
+        stage.show();
+
+
+        editItemController.showItemInfo(selectedItem);
+
     }
 
     @FXML

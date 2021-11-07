@@ -63,7 +63,7 @@
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#popupAddItemSceneOnButtonPress" text="Add Item" />
             <Button mnemonicParsing="false" onMouseClicked="#removeItemFromTable" text="Remove Item" />
-            <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" text="Edit Item" />
+            <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#popupEditItemSceneOnButtonPress" text="Edit Item" />
             <Button layoutX="337.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clearAllItemsFromTable" text="Clear All Items" />
             <Button layoutX="650.0" layoutY="10.0" mnemonicParsing="false" text="Toggle Completion" />
          </children>
