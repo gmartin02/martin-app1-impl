@@ -28,9 +28,9 @@ public class ToDoList {
         itemList.remove(item);
     }
 
-    public String addItem(Item newItem) {
+    public void addItem(Item newItem) {
         //adds a new item to the list at the end
-        return null;
+        itemList.add(newItem);
     }
 
     public Item createItem() {

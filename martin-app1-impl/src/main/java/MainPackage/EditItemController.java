@@ -37,15 +37,15 @@ public class EditItemController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
 
-        /*newItem.name = itemName.getText();
+        newItem.name = itemName.getText();
         newItem.description = itemDescription.getText();
         newItem.dueDate = itemDueDate.getValue().toString();
         newItem.completion = "false";
 
-        tdm.tdl.itemList.add(newItem);
+        tdm.tdl.addItem(newItem);
         controller.todoList.add(newItem);
         controller.tdm = tdm;
-        controller.loadTable(controller.tdm);*/
+        controller.loadTable(tdm);
 
         stage.show();
 
@@ -57,5 +57,6 @@ public class EditItemController {
     public void showItemInfo(Item selectedItem) {
         itemName.setText(selectedItem.name);
         itemDescription.setText(selectedItem.description);
+
     }
 }

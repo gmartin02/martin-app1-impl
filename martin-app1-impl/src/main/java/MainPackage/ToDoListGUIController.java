@@ -80,12 +80,18 @@ public class ToDoListGUIController implements Initializable {
 
     @FXML
     public void popupEditItemSceneOnButtonPress() throws IOException {
+        List<Item> currentItems = tableView.getItems();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditItem.fxml"));
         Parent editItemParent = loader.load();
         Scene editItemScene = new Scene(editItemParent);
         EditItemController editItemController = loader.getController();
 
         Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+
+        editItemController.showItemInfo(selectedItem);
+        currentItems.remove(selectedItem);
+        editItemController.tdm.tdl.itemList = currentItems;
 
         Scene scene = tableView.getScene();
         Window window = scene.getWindow();
@@ -94,10 +100,6 @@ public class ToDoListGUIController implements Initializable {
         stage.setTitle("Edit item");
         stage.setScene(editItemScene);
         stage.show();
-
-
-        editItemController.showItemInfo(selectedItem);
-
     }
 
     @FXML
