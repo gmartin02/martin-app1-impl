@@ -13,7 +13,7 @@ class ToDoListTest {
 
     @Test
     void addItem() {
-        //ensures that a new item was added to a List and that only that List was affected
+
     }
 
     @Test
