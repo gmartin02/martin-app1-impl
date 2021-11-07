@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ToDoListTest {
 
     @Test
-    void removeItem() {
-        //ensures that an item no longer exists in a List and that only that List was affected
+    void clearList() {
+
     }
 
     @Test

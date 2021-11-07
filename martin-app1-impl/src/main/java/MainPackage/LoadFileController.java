@@ -2,7 +2,6 @@ package MainPackage;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,10 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class LoadFileController implements Initializable {
+public class LoadFileController {
     ToDoListManager tdm = new ToDoListManager();
 
     @FXML
@@ -43,16 +40,5 @@ public class LoadFileController implements Initializable {
         } else {
             label.setText("Please enter a valid file path");
         }
-    }
-
-    @FXML
-    public void closeWindowOnExitButtonPress(MouseEvent event) {
-        Stage window = (Stage)((Node) event.getSource()).getScene().getWindow();
-        window.close();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

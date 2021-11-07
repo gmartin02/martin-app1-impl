@@ -29,14 +29,9 @@
                         <Font size="20.0" />
                     </font>
                 </Button>
-                <Button fx:id="goBackButton" mnemonicParsing="false" onMouseClicked="#closeWindowOnExitButtonPress" text="Go Back">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Button>
             </children>
             <padding>
-                <Insets left="150.0" />
+                <Insets left="350.0" />
             </padding>
         </HBox>
     </children>

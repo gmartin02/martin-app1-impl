@@ -6,6 +6,7 @@ package MainPackage;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
@@ -14,11 +15,9 @@ public class ToDoListManager {
     String fileLocation;
     File file = new File(getFileLocation()+ "/" + getFileName());
 
-
     public void writeToFile(String file, ToDoListManager manager) {
         //writes the manager created in the function above and loops through
         // its to do lists and each of the items and writes it down in each down on a separate line
-
         try {
             //create a buffered reader insider a try/catch block
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
@@ -83,7 +82,7 @@ public class ToDoListManager {
                         loadedList.tdl.itemList.add(item);
                     }
             }
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         //returns newly made manager
@@ -102,7 +101,6 @@ public class ToDoListManager {
 
     public String createList(String title) {
         tdl.title = title;
-        System.out.println("Title: " + tdl.title);
         //gets the title
         return title;
     }

@@ -1,13 +1,9 @@
-null
-6
+groceries
+3
 get apple
 granny smith
 2021-10-31
 incomplete
-get chicken
-tender
-2021-10-31
-complete
 Get water
 Dasani
 2021-11-06
@@ -16,11 +12,3 @@ Get chips
 Lays
 2021-12-17
 complete
-sdfsf
-sfsdf
-2021-12-04
-incomplete
-sfsf
-sdfsdf
-2021-11-01
-incomplete

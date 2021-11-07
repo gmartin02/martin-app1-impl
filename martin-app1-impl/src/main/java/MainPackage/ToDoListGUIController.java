@@ -72,7 +72,6 @@ public class ToDoListGUIController implements Initializable {
             tdm.tdl.itemList.get(indexOfItem).changeCompletion();
             loadTable(tdm);
         }
-
     }
 
     @FXML
