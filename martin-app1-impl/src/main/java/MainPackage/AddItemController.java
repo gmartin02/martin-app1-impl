@@ -40,7 +40,11 @@ public class AddItemController {
 
         newItem.name = itemName.getText();
         newItem.description = itemDescription.getText();
-        newItem.dueDate = itemDueDate.getValue().toString();
+        if(itemDueDate.getValue() == null) {
+            newItem.dueDate = "";
+        } else {
+            newItem.dueDate = itemDueDate.getValue().toString();
+        }
         newItem.completion = "false";
 
         tdm.tdl.addItem(newItem);

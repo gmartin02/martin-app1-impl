@@ -44,11 +44,21 @@ public class ToDoList {
         //loops through the itemList to show all the items
     }
 
-    public void displayCompletedItems() {
+    public void displayCompletedItems(List<Item> displayList) {
+        for(int i = 0; i < itemList.size(); i++) {
+            if(itemList.get(i).completion.equals("true")) {
+                displayList.add(itemList.get(i));
+            }
+        }
         //loops through the itemList to show only completed items
     }
 
-    public void displayIncompleteItems() {
+    public void displayIncompleteItems(List<Item> displayList) {
+        for(int i = 0; i < itemList.size(); i++) {
+            if(itemList.get(i).completion.equals("false")) {
+                displayList.add(itemList.get(i));
+            }
+        }
         //loops through the itemList to show only incomplete items
     }
 

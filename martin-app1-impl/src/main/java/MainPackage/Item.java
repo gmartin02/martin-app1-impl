@@ -44,15 +44,12 @@ public class Item {
         return completion;
     }
 
-    public void editDescription() {
-        //takes in a new description from the GUI and replaces the old one
-    }
-
-    public void editDueDate() {
-        //takes in a new due date from the GUI and replaces the old one
-    }
-
     public void changeCompletion() {
+        if(completion.equals("false")) {
+            completion = "true";
+        } else if(completion.equals("true")) {
+            completion = "false";
+        }
         //when activated changes completion from false to true or vice versa
         //will be a checkbox in the GUI so a check = true, empty = false
     }

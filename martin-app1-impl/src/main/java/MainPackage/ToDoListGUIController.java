@@ -36,6 +36,44 @@ public class ToDoListGUIController implements Initializable {
     private TableColumn<Item, String> descriptionColumn;
     @FXML
     private TableColumn<Item, String> dueDateColumn;
+    @FXML
+    private RadioButton showAllItems;
+    @FXML
+    private RadioButton showIncompletedItems;
+    @FXML
+    private RadioButton showCompletedItems;
+
+    @FXML
+    public void changeItemViewOnRadioToggle() {
+        ToDoListManager currentDisplay = new ToDoListManager();
+        if(showAllItems.isSelected()) {
+            showCompletedItems.selectedProperty().set(false);
+            showIncompletedItems.selectedProperty().set(false);
+            loadTable(tdm);
+        }
+        if(showCompletedItems.isSelected()) {
+            showAllItems.selectedProperty().set(false);
+            showIncompletedItems.selectedProperty().set(false);
+            tdm.tdl.displayCompletedItems(currentDisplay.tdl.itemList);
+            loadTable(currentDisplay);
+        }
+        if(showIncompletedItems.isSelected()) {
+            showCompletedItems.selectedProperty().set(false);
+            showAllItems.selectedProperty().set(false);
+            tdm.tdl.displayIncompleteItems(currentDisplay.tdl.itemList);
+            loadTable(currentDisplay);
+        }
+    }
+    @FXML
+    public void toggleCompletionOnButtonPress() {
+        Item selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if(tdm.tdl.itemList.contains(selectedItem)) {
+            int indexOfItem = tdm.tdl.itemList.lastIndexOf(selectedItem);
+            tdm.tdl.itemList.get(indexOfItem).changeCompletion();
+            loadTable(tdm);
+        }
+
+    }
 
     @FXML
     public void removeItemFromTable() {
