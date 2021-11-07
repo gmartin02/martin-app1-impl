@@ -18,12 +18,14 @@ public class ToDoList {
         return title;
     }
 
-    public void clearList() {
+    public List<Item> clearList() {
         //replaces the current list with an empty one, similar to loading to do list but an empty one
+        return new ArrayList<>();
     }
     public void removeItem(Item item) {
         //gets the item selected in the GUI and ensures that it exists in the list
         //using its index it is removed from the list
+        itemList.remove(item);
     }
 
     public String addItem(Item newItem) {

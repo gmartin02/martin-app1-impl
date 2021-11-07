@@ -61,7 +61,7 @@
             <Insets left="60.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" text="Add Item" />
+            <Button mnemonicParsing="false" onMouseClicked="#popupAddItemSceneOnButtonPress" text="Add Item" />
             <Button mnemonicParsing="false" onMouseClicked="#removeItemFromTable" text="Remove Item" />
             <Button layoutX="70.0" layoutY="10.0" mnemonicParsing="false" text="Edit Item" />
             <Button layoutX="337.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#clearAllItemsFromTable" text="Clear All Items" />

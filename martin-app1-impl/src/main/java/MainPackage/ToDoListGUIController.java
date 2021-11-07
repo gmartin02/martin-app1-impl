@@ -48,7 +48,7 @@ public class ToDoListGUIController implements Initializable {
     public void clearAllItemsFromTable() {
         tableView.getItems().removeAll(todoList);
         todoList.removeAll();
-        tdm.tdl.itemList = todoList;
+        tdm.tdl.itemList = tdm.tdl.clearList();
         loadTable(tdm);
     }
     @FXML
@@ -56,6 +56,21 @@ public class ToDoListGUIController implements Initializable {
         tdm.writeToFile(fileLocationAndName.getText(), tdm);
         fileLocationAndName.clear();
         fileLocationAndName.setPromptText("Enter file location followed by file name      Ex. Documents/COP3330/myList.txt");
+    }
+
+    @FXML
+    public void popupAddItemSceneOnButtonPress() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddItem.fxml"));
+        Parent addItemParent = loader.load();
+        Scene addItemScene = new Scene(addItemParent);
+
+        Scene scene = tableView.getScene();
+        Window window = scene.getWindow();
+        Stage stage = (Stage) window;
+
+        stage.setTitle("Add item");
+        stage.setScene(addItemScene);
+        stage.show();
     }
 
     @FXML

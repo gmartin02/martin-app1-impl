@@ -106,9 +106,4 @@ public class ToDoListManager {
         //gets the title
         return title;
     }
-
-    public void ediTitle(String newTitle) {
-        tdl.title = newTitle;
-        //changes the title of the list by prompting for a new name and reassigning title
-    }
 }
